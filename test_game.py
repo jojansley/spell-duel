@@ -1,6 +1,6 @@
-from wizards import Wizard
-from spells import SpellBook
 from engine import GameEngine
+from spells import SpellBook
+from wizards import Wizard
 
 
 def test_full_duel_player1_wins():

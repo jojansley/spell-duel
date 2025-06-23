@@ -1,8 +1,9 @@
-from wizards import Wizard
-from spells import SpellBook
-from engine import GameEngine
 import random
 import time
+
+from engine import GameEngine
+from spells import SpellBook
+from wizards import Wizard
 
 # spell-duel/game.py
 # This is the main game loop for the Spell Duel game.

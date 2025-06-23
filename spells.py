@@ -7,11 +7,7 @@ class Spell:
 
 class SpellBook:
     def __init__(self):
-        self.spells = [
-            Spell("Incendio", "damage", 25),
-            Spell("Episkey", "heal", 20),
-            Spell("Protego", "shield", 0)
-        ]
+        self.spells = [Spell("Incendio", "damage", 25), Spell("Episkey", "heal", 20), Spell("Protego", "shield", 0)]
 
     def choose_spell_by_die(self, roll):
         # roll is expected to be 1-based (1, 2, or 3)

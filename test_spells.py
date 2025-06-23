@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from wizards import Wizard
-from spells import Spell, SpellBook
 from engine import GameEngine
+from spells import Spell, SpellBook
+from wizards import Wizard
 
 
 def test_choose_spell_by_die():
