@@ -51,4 +51,3 @@ class GameEngine:
         else:
             attack_or_shield = [s for s in spells if s.spell_type in ("damage", "shield")]
             return random.choice(attack_or_shield)
-            # test comment
