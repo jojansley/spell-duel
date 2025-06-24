@@ -10,13 +10,18 @@ class GameEngine:
     def apply_spell(self, caster, target, spell, die_roll=None):
         attack_mod = {1: -15, 2: -10, 3: 0, 4: 5, 5: 10}
         heal_mod = {1: -10, 2: -5, 3: 0, 4: 5, 5: 10}
-        shield_mod = {1: 0.1, 2: 0.2, 3: 0.4, 4: 0.8}
+        shield_mod = {1: 0.1, 2: 0.2, 3: 0.4, 4: 0.6, 5: 0.8}
         max_health = 100
 
         if spell.spell_type == "shield":
             # Store shield effect on the caster for next attack
             if die_roll in shield_mod:
-                caster.active_shield = shield_mod[die_roll]
+                if caster.active_shield > 0:
+                    caster.active_shield = caster.active_shield + shield_mod[die_roll]
+                    if caster.active_shield > 1:
+                        caster.active_shield = 1
+                else:
+                    caster.active_shield = shield_mod[die_roll]
             else:
                 caster.active_shield = 0
             return
@@ -43,11 +48,11 @@ class GameEngine:
                 caster.health = max_health
 
     def choose_ai_spell(self, ai_wizard):
-        # AI chooses heal if health <= 50, else randomly attack or shield
+        # AI has the ability to randomly choose to heal if health <= 50, else will randomly attack or shield
         spells = [spell for spell in self.spellbook.spells]
         if ai_wizard.health <= 50:
-            heal_spells = [s for s in spells if s.spell_type == "heal"]
-            return random.choice(heal_spells)
+            # heal_spells = [s for s in spells if s.spell_type == "heal"]
+            return random.choice(spells)
         else:
             attack_or_shield = [s for s in spells if s.spell_type in ("damage", "shield")]
             return random.choice(attack_or_shield)

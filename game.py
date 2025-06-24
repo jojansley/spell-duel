@@ -56,8 +56,13 @@ def main():
 
         engine.apply_spell(current_wizard, opponent, spell, die_roll=roll)
 
-        print(f"{wizard1.name} Health: {wizard1.health}")
-        print(f"{wizard2.name} Health: {wizard2.health}")
+        print()
+        print(f"{wizard1.name} Health: {int(round(wizard1.health))}")
+        if wizard1.active_shield > 0:
+            print(f"{wizard1.name} Shield: {int(wizard1.active_shield * 100)}%")
+        print(f"{wizard2.name} Health: {int(round(wizard2.health))}")
+        if wizard2.active_shield > 0:
+            print(f"{wizard2.name} Shield: {int(wizard2.active_shield * 100)}%")
 
         current_wizard, opponent = opponent, current_wizard
 
