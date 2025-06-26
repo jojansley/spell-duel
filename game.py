@@ -12,7 +12,7 @@ from wizards import Wizard
 # It initializes the wizards, spellbook, and game engine,
 # and manages the turns of the duel.
 
-# Possible colors to be bassed to termcolor.colored: 'grey','red','green','yellow','blue','magenta','cyan','white'
+# Possible colors to be passed to termcolor.colored: 'grey','red','green','yellow','blue','magenta','cyan','white'
 
 
 def main():

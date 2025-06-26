@@ -40,7 +40,7 @@ def test_shield_spell_colors_terminal():
     # Check Wizard active shield
     assert wizard1.active_shield > 0
     if wizard1.active_shield > 0:
-        shield_str = f"Wizard 1 has an active shield of {wizard1.active_shield * 100}%"
+        shield_str = f"Wizard 1 has an active shield of {int(wizard1.active_shield * 100)}%"
         print(colored(shield_str, "blue"))
 
 
