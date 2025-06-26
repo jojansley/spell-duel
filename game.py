@@ -1,6 +1,8 @@
 import random
 import time
 
+from termcolor import colored
+
 from engine import GameEngine
 from spells import SpellBook
 from wizards import Wizard
@@ -9,6 +11,8 @@ from wizards import Wizard
 # This is the main game loop for the Spell Duel game.
 # It initializes the wizards, spellbook, and game engine,
 # and manages the turns of the duel.
+
+# Possible colors to be bassed to termcolor.colored: 'grey','red','green','yellow','blue','magenta','cyan','white'
 
 
 def main():
@@ -59,10 +63,12 @@ def main():
         print()
         print(f"{wizard1.name} Health: {int(round(wizard1.health))}")
         if wizard1.active_shield > 0:
-            print(f"{wizard1.name} Shield: {int(wizard1.active_shield * 100)}%")
+            shield_str = f"{wizard1.name} Shield: {int(wizard1.active_shield * 100)}%"
+            print(colored(shield_str, "blue"))
         print(f"{wizard2.name} Health: {int(round(wizard2.health))}")
         if wizard2.active_shield > 0:
-            print(f"{wizard2.name} Shield: {int(wizard2.active_shield * 100)}%")
+            shield_str = f"{wizard1.name} Shield: {int(wizard1.active_shield * 100)}%"
+            print(colored(shield_str, "blue"))
 
         current_wizard, opponent = opponent, current_wizard
 

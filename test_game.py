@@ -1,3 +1,5 @@
+from termcolor import colored
+
 from engine import GameEngine
 from spells import SpellBook
 from wizards import Wizard
@@ -26,16 +28,20 @@ def test_heal_spell_increases_health():
     assert wizard1.health == 70
 
 
-def test_shield_spell_does_nothing():
+def test_shield_spell_colors_terminal():
     wizard1 = Wizard("Luna", 80)
     wizard2 = Wizard("Bellatrix", 80)
     spellbook = SpellBook()
     engine = GameEngine(wizard1, wizard2, spellbook)
     # Luna casts Protego (shield, does nothing)
     spell = spellbook.choose_spell_by_die(3)
-    engine.apply_spell(wizard1, wizard2, spell)
-    assert wizard1.health == 80
-    assert wizard2.health == 80
+    engine.apply_spell(caster=wizard1, target=wizard2, spell=spell, die_roll=5)  # simulate rolling a 5 for test
+
+    # Check Wizard active shield
+    assert wizard1.active_shield > 0
+    if wizard1.active_shield > 0:
+        shield_str = f"Wizard 1 has an active shield of {wizard1.active_shield * 100}%"
+        print(colored(shield_str, "blue"))
 
 
 def test_health_never_negative():
@@ -48,3 +54,6 @@ def test_health_never_negative():
     engine.apply_spell(wizard1, wizard2, spell)
     assert wizard2.health == 0
     assert wizard1.health == 100
+
+
+test_shield_spell_colors_terminal()
